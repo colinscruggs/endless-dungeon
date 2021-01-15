@@ -1,23 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import EntityComponent from './components/EntityComponent';
+import Entity from './types/Entity';
+import State from './types/State';
 
 function App() {
+  // THIS IS THE MAIN STATE I GUESS
+  const entityProps: State = {
+    player: {
+      name: 'Colin',
+      stats: {
+        strength: 5,
+        dex: 5,
+        arcana: 5
+      },
+      status: {
+        health: 100,
+        mana: 50
+      },
+      inventory: [],
+      equippedWeapon: {}
+    },
+    currentMob: {
+      name: 'Enemy',
+      stats: {
+        strength: 5,
+        dex: 5,
+        arcana: 5
+      },
+      status: {
+        health: 100,
+        mana: 50
+      },
+      inventory: [],
+      equippedWeapon: {}
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Endless Dungeon</h1>
+        <EntityComponent></EntityComponent>
       </header>
     </div>
   );
