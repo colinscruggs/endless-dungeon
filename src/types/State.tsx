@@ -1,7 +1,7 @@
 import Entity from "./Entity";
 
-interface State { 
-  player: Entity | any;
+type State = { 
+  player: Entity;
   currentMob: Entity;
 }
 
