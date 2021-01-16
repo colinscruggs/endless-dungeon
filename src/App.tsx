@@ -1,52 +1,65 @@
-import React, { Component } from 'react';
-import './App.css';
+import { Component } from 'react';
+import './css/App.css';
 import EntityComponent from './components/EntityComponent';
-import Entity from './types/Entity';
 import State from './types/State';
 
 class App extends Component<any, State> {
   constructor(props: any) {
     super(props);
      // THIS IS THE MAIN STATE I GUESS
-  this.state = {
-    player: {
-      name: 'Colin',
-      stats: {
-        strength: 5,
-        dex: 5,
-        arcana: 5
+    this.state = {
+      player: {
+        name: 'Colin',
+        stats: {
+          strength: 5,
+          dex: 5,
+          arcana: 5
+        },
+        status: {
+          maxHealth: 100,
+          health: 100,
+          maxMana: 50,
+          mana: 50
+        },
+        inventory: [],
+        equippedWeapon: {}
       },
-      status: {
-        health: 100,
-        mana: 50
-      },
-      inventory: [],
-      equippedWeapon: {}
-    },
-    currentMob: {
-      name: 'Enemy',
-      stats: {
-        strength: 5,
-        dex: 5,
-        arcana: 5
-      },
-      status: {
-        health: 100,
-        mana: 50
-      },
-      inventory: [],
-      equippedWeapon: {}
+      currentMob: {
+        name: 'Enemy',
+        stats: {
+          strength: 5,
+          dex: 5,
+          arcana: 5
+        },
+        status: {
+          maxHealth: 100,
+          health: 100,
+          maxMana: 50,
+          mana: 50
+        },
+        inventory: [],
+        equippedWeapon: {}
+      }
     }
   }
-  }
-
+  /* tslint:disable-next-line */
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Endless Dungeon</h1>
-          <EntityComponent entity={this.state.player}></EntityComponent>
+          <h2>Endless Dungeon</h2>
         </header>
+
+        <div className="body">
+          <div className="mob">
+            <EntityComponent {...this.state.currentMob}></EntityComponent>
+          </div>
+
+          <div className="player">
+            <EntityComponent {...this.state.player}></EntityComponent>
+          </div>
+        </div>
+
       </div>
     );
   }

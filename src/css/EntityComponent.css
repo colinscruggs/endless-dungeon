@@ -1,0 +1,25 @@
+.entityContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.healthBar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 20%;
+}
+
+.healthBar :nth-child(2) {
+  align-self: center;
+  min-width: 250px;
+}
+
+.healthBar h3 {
+  margin: 0.5rem;
+}

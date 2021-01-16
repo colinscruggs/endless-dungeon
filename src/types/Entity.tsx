@@ -6,7 +6,9 @@ type Entity = {
     arcana: number,
   },
   status: {
+    maxHealth: number,
     health: number,
+    maxMana: number,
     mana: number
   },
   inventory: any[],
