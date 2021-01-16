@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   display: flex;
@@ -13,7 +14,7 @@
 
 .App-header {
   background-color: #282c34;
-  max-height: 2rem;
+  max-height: 2rem !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,4 +39,15 @@
 
 .player {
   margin: 1rem;
+  display: flex;
+  justify-content: space-around;
 }
+
+.player > :nth-child(1) {
+  flex-grow: 1
+}
+
+.player > :nth-child(2) {
+  flex-grow: 2
+}
+

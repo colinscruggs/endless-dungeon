@@ -6,6 +6,7 @@
 .statusContainer {
   display: flex;
   justify-content: space-evenly;
+  justify-self:center;
 }
 
 .healthBar {

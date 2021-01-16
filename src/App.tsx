@@ -1,6 +1,7 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './css/App.css';
 import EntityComponent from './components/EntityComponent';
+import ActionMenu from './components/ActionMenu';
 import State from './types/State';
 
 class App extends Component<any, State> {
@@ -22,7 +23,9 @@ class App extends Component<any, State> {
           mana: 50
         },
         inventory: [],
-        equippedWeapon: {}
+        equippedWeapon: {
+          attackPower: 5
+        }
       },
       currentMob: {
         name: 'Enemy',
@@ -42,6 +45,23 @@ class App extends Component<any, State> {
       }
     }
   }
+
+  playerAttack = () => {
+    let max = this.state.player.equippedWeapon.attackPower + this.state.player.stats.strength;
+    let min = this.state.player.stats.strength;
+    let damage = Math.floor(Math.random() * (max - min) + min)
+
+    this.setState({
+      ...this.state,
+      currentMob: {
+        ...this.state.currentMob,
+        status: {
+          ...this.state.currentMob.status,
+          health: Math.max(this.state.currentMob.status.health - damage, 0)
+        }
+      }
+    })
+  }
   /* tslint:disable-next-line */
   render() {
     return (
@@ -57,6 +77,7 @@ class App extends Component<any, State> {
 
           <div className="player">
             <EntityComponent {...this.state.player}></EntityComponent>
+            <ActionMenu playerAttack={this.playerAttack}></ActionMenu>
           </div>
         </div>
 
