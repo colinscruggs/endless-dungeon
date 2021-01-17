@@ -7,6 +7,9 @@
   display: flex;
   justify-content: space-evenly;
   justify-self:center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
 }
 
 .healthBar {

@@ -8,7 +8,7 @@ import {
 export default function HealthBar({
   percentage,
   colors = defaultColorPallet,
-  width = 250,
+  width = 100,
   height = 24
 }) {
   return (

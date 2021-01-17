@@ -236,7 +236,6 @@ class App extends Component<any, State> {
         <div className="body">
           <div className="mob">
             <EntityComponent {...this.state.currentMob}></EntityComponent>
-            <div></div>
           </div>
 
           <div className="battleLog">
