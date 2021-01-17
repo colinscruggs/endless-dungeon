@@ -5,6 +5,7 @@ type State = {
   currentTurn: CharacterType,
   player: Entity;
   currentMob: Entity;
+  log: string[];
 }
 
 export default State;

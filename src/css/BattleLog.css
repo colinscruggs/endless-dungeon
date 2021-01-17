@@ -1,0 +1,7 @@
+.battleLogContainer {
+  max-height: 55.5vh;
+  justify-content: flex-start;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}

@@ -1,11 +1,15 @@
+import CharacterType from './CharacterType';
 import Weapon from './Weapon';
 
 type Entity = {
   name: string,
+  type: CharacterType,
   stats: {
     strength: number,
     dex: number,
     arcana: number,
+    exp: number,
+    difficulty?: number
   },
   status: {
     maxHealth: number,

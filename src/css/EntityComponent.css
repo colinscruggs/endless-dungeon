@@ -19,6 +19,7 @@
 .healthBar :nth-child(2) {
   align-self: center;
   min-width: 250px;
+  margin: 0 2rem;
 }
 
 .healthBar h3 {

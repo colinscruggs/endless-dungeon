@@ -2,6 +2,7 @@ import React from "react";
 import Entity from '../types/Entity';
 import HealthBar from './HealthBar/HealthBar';
 import '../css/EntityComponent.css';
+import CharacterType from "../types/CharacterType";
 
 class EntityComponent extends React.Component<Entity, any> {
   constructor(props: any) {
@@ -11,7 +12,8 @@ class EntityComponent extends React.Component<Entity, any> {
   render() {
     const {
       name,
-      // stats,
+      // type,
+      stats,
       status,
       // inventory,
       // equippedWeapon
@@ -28,6 +30,7 @@ class EntityComponent extends React.Component<Entity, any> {
             />
           </div>
 
+          { status.maxMana > 1 ? 
           <div className="healthBar">
             <h3>Mana</h3>
             <HealthBar
@@ -35,6 +38,7 @@ class EntityComponent extends React.Component<Entity, any> {
               colors={['aquamarine']}
             />
           </div>
+          : null }
         </div>
         
       </div>

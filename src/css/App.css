@@ -23,24 +23,41 @@
   padding: 1rem;
 }
 
-.body div {
-  background-color: aliceblue;
-}
-
 .body {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 2rem);
+  min-height: calc(100vh - 4rem);
+  justify-content: space-between;
 }
 
 .mob {
-  margin: 1rem;
+  margin: 0 0 1rem 0;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 1rem;
+  background-color: rosybrown;
+  flex: 0;
+}
+
+.mob > :nth-child(1) {
+  flex-grow: 1
+}
+
+.mob > :nth-child(2) {
+  flex-grow: 2
+}
+
+.battleLog {
+  flex: 2;
 }
 
 .player {
-  margin: 1rem;
+  margin: 1rem 0 0 0;
   display: flex;
   justify-content: space-around;
+  padding-bottom: 1rem;
+  background-color: aliceblue;
+  flex: 0;
 }
 
 .player > :nth-child(1) {
