@@ -6,10 +6,6 @@ import CharacterType from "../types/CharacterType";
 import WeaponType from "../types/WeaponType";
 
 class ActionMenu extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     const {
       currentTurn,

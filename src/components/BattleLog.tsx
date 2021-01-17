@@ -4,10 +4,6 @@ import '../css/BattleLog.css';
 import 'antd/lib/list/style/index.css';
 
 class BattleLog extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     const {
       log

@@ -2,18 +2,13 @@ import React from "react";
 import Entity from '../types/Entity';
 import HealthBar from './HealthBar/HealthBar';
 import '../css/EntityComponent.css';
-import CharacterType from "../types/CharacterType";
 
 class EntityComponent extends React.Component<Entity, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     const {
       name,
       // type,
-      stats,
+      // stats,
       status,
       // inventory,
       // equippedWeapon
