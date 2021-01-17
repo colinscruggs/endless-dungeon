@@ -3,12 +3,15 @@ import './css/App.css';
 import EntityComponent from './components/EntityComponent';
 import ActionMenu from './components/ActionMenu';
 import State from './types/State';
+import CharacterType from './types/CharacterType';
+import WeaponType from './types/WeaponType';
 
 class App extends Component<any, State> {
   constructor(props: any) {
     super(props);
      // THIS IS THE MAIN STATE I GUESS
     this.state = {
+      currentTurn: CharacterType.Player,
       player: {
         name: 'Colin',
         stats: {
@@ -24,7 +27,10 @@ class App extends Component<any, State> {
         },
         inventory: [],
         equippedWeapon: {
-          attackPower: 5
+          name: 'Sword',
+          type: WeaponType.Melee,
+          attackPower: 5,
+          accuracy: .9
         }
       },
       currentMob: {
@@ -41,27 +47,65 @@ class App extends Component<any, State> {
           mana: 50
         },
         inventory: [],
-        equippedWeapon: {}
+        equippedWeapon: {
+          name: 'Claw',
+          type: WeaponType.Melee,
+          attackPower: 3,
+          accuracy: .85
+        }
       }
     }
   }
 
-  playerAttack = () => {
-    let max = this.state.player.equippedWeapon.attackPower + this.state.player.stats.strength;
-    let min = this.state.player.stats.strength;
-    let damage = Math.floor(Math.random() * (max - min) + min)
+  changeTurn = (turn: CharacterType) => {
+    this.setState({ currentTurn: turn})
+  }
 
-    this.setState({
-      ...this.state,
+  playerAttack = () => {
+    // TODO: add switch/case for different attack styles
+    let min = this.state.player.stats.strength;
+    let max = this.state.player.equippedWeapon.attackPower + this.state.player.stats.strength;
+    let damage = this.calculateDamage(min, max);
+
+    this.setState((state) => ({
       currentMob: {
-        ...this.state.currentMob,
+        ...state.currentMob,
         status: {
-          ...this.state.currentMob.status,
-          health: Math.max(this.state.currentMob.status.health - damage, 0)
+          ...state.currentMob.status,
+          health: Math.max(state.currentMob.status.health - damage, 0)
         }
       }
-    })
+    }));
+
+    // end turn
+    this.changeTurn(CharacterType.Mob);
+
+    // TODO: figure out how to actually react to state.currentTurn === Mob
+    setTimeout(this.mobAttack, 1000);
   }
+
+  mobAttack = () => {
+    let min = this.state.currentMob.stats.strength;
+    let max = this.state.currentMob.equippedWeapon.attackPower + this.state.currentMob.stats.strength;
+    let damage = this.calculateDamage(min, max);
+
+    this.setState((state) => ({
+      player: {
+        ...state.player,
+        status: {
+          ...state.player.status,
+          health: Math.max(state.player.status.health - damage, 0)
+        }
+      }
+    }));
+    // end turn
+    this.changeTurn(CharacterType.Player);
+  }
+
+  calculateDamage = (min: number, max: number, type?: any) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
   /* tslint:disable-next-line */
   render() {
     return (
@@ -77,7 +121,7 @@ class App extends Component<any, State> {
 
           <div className="player">
             <EntityComponent {...this.state.player}></EntityComponent>
-            <ActionMenu playerAttack={this.playerAttack}></ActionMenu>
+            <ActionMenu currentTurn={this.state.currentTurn} playerAttack={this.playerAttack}></ActionMenu>
           </div>
         </div>
 

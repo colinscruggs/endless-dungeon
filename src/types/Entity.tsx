@@ -1,3 +1,5 @@
+import Weapon from './Weapon';
+
 type Entity = {
   name: string,
   stats: {
@@ -12,7 +14,7 @@ type Entity = {
     mana: number
   },
   inventory: any[],
-  equippedWeapon: any
+  equippedWeapon: Weapon
 };
 
 export default Entity;
